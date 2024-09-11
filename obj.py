@@ -6,7 +6,7 @@ from PIL import Image
 
 model=YOLO('yolov8n.pt')
 
-def detect_objects(image,thres=0.17):
+def detect_objects(image,thres=0.16):
     img=np.array(image)
     img=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     results=model(img,conf=thres)
