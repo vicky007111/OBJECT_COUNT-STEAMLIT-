@@ -14,14 +14,11 @@ def detect_objects(image):
     count=len(detections)
     class_names=results[0].names
     detected_classes=[class_names[int(box.cls)] for box in detections]
-    return count,detected_classes
-st.title("Object Detectior")
+    return count
+st.title("Object Detector")
 file=st.file_uploader("Choose an image...", type=['jpg', 'jpeg', 'png'])
 if file is not None:
     image=Image.open(file)
-    count,detected= detect_objects(image)
+    count=detect_objects(image)
     st.image(image, caption='Uploaded Image', use_column_width=True)
     st.write('Number of objects detected:',count)
-    st.write('Detected objects:')
-    for obj in detected:
-        st.write('- ' + obj)
