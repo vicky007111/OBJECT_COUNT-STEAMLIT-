@@ -6,10 +6,10 @@ from PIL import Image
 
 model=YOLO('yolov8n.pt')
 
-def detect_objects(image,thres=0.16):
+def detect_objects(image):
     img=np.array(image)
     img=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-    results=model(img,conf=thres)
+    results=model(img)
     detections=results[0].boxes
     count=len(detections)
     class_names=results[0].names
